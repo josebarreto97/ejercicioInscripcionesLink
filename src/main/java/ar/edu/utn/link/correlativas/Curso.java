@@ -9,7 +9,7 @@ public class Curso {
 	private boolean abierto;
 	private int anio;
 	private Set<Alumno> inscriptos;
-	final int cantMinimaAlumnos = 15; 
+	final int cantMinimaAlumnos = 3; 
 
 	public Curso(Materia materia, int anio) {
 		this.materia = materia;
