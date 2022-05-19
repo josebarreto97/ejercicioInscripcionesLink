@@ -9,6 +9,7 @@ public class Curso {
 	private boolean abierto;
 	private int anio;
 	private Set<Alumno> inscriptos;
+	final int cantMinimaAlumnos = 15; 
 
 	public Curso(Materia materia, int anio) {
 		this.materia = materia;
@@ -50,6 +51,18 @@ public class Curso {
 
 	public boolean estaInscripto(Alumno alumno) {
 		return this.getInscriptos().contains(alumno);
+	}
+	
+	public void inscribir(Alumno alumno) {
+		this.inscriptos.add(alumno);
+	}
+	
+	public void abrirCurso() throws NoCumpleConLaCantidadMinimaAlumnos{
+		if(inscriptos.size()<cantMinimaAlumnos) {
+			throw new NoCumpleConLaCantidadMinimaAlumnos("El curso no puede abrirse. No cumple con la cantidad minima de alumnos");
+		}else {
+			this.setAbierto(true);
+		}
 	}
 
 }

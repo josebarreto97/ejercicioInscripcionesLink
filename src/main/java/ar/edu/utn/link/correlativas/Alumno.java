@@ -1,5 +1,6 @@
 package ar.edu.utn.link.correlativas;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -14,6 +15,8 @@ public class Alumno {
 	public Alumno(String nombre) {
 		super();
 		this.nombre = nombre;
+		this.cursos = new ArrayList<>();
+		this.materiasAprobadas = new ArrayList<>();
 	}
 	
 	public String getNombre() {
@@ -31,12 +34,17 @@ public class Alumno {
 	public Collection<Materia> getMateriasAprobadas() {
 		return materiasAprobadas;
 	}
+	
 	public void setMateriasAprobadas(Collection<Materia> materiasAprobadas) {
 		this.materiasAprobadas = materiasAprobadas;
 	}
 
-	public void inscribir(Curso curso) {
-		// TODO Auto-generated method stub
+	public void inscribir(Curso curso) throws NoCumpleCorrelativas {
+		if(!curso.getMateria().cumpleCorrelativas(this.materiasAprobadas)) {
+			throw new NoCumpleCorrelativas("No cumple con las correlativas");
+		}else {
+			curso.inscribir(this);
+		}
 		
 	}
 	

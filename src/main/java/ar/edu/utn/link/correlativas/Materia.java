@@ -1,5 +1,6 @@
 package ar.edu.utn.link.correlativas;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class Materia {
@@ -10,6 +11,7 @@ public class Materia {
 	public Materia(String nombre) {
 		super();
 		this.nombre = nombre;
+		this.correlativas = new ArrayList<>();
 	}
 	
 	public String getNombre() {
@@ -23,6 +25,9 @@ public class Materia {
 	}
 	public void setCorrelativas(Collection<Materia> correlativas) {
 		this.correlativas = correlativas;
+	}
+	public boolean cumpleCorrelativas(Collection<Materia> materias) {
+		return this.correlativas.containsAll(materias);
 	}
 
 }
